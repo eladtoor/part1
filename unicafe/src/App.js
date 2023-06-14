@@ -5,7 +5,7 @@ const Header = ({ title }) => {
 const Button = ({ buttonName, handleButton }) => {
   return <button onClick={handleButton}>{buttonName}</button>;
 };
-const Display = ({ good, neutral, bad, all, average, positive }) => {
+const Statistics = ({ good, neutral, bad, all, average, positive }) => {
   return (
     <div>
       <p>good {good}</p>
@@ -60,7 +60,7 @@ const App = () => {
           setBad(bad + 1);
         }}
       />
-      <Display
+      <Statistics
         good={good}
         neutral={neutral}
         bad={bad}
