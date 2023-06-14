@@ -5,20 +5,37 @@ const Header = ({ title }) => {
 const Button = ({ buttonName, handleButton }) => {
   return <button onClick={handleButton}>{buttonName}</button>;
 };
+const StatisticLine = ({ type, stat }) => {
+  if (type === "positive") {
+    return (
+      <>
+        <p>
+          {type} {stat}%
+        </p>
+      </>
+    );
+  } else
+    return (
+      <p>
+        {type} {stat}
+      </p>
+    );
+};
 const Statistics = ({ good, neutral, bad, all, average, positive }) => {
   if (good || neutral || bad || all || average || positive)
     return (
       <div>
-        <p>good {good}</p>
-        <p>neutral {neutral}</p>
-        <p>bad {bad}</p>
-        <p>all {all}</p>
-        <p>average {average}</p>
-        <p>positive {positive * 100}%</p>
+        <StatisticLine type={"good"} stat={good} />
+        <StatisticLine type={"neutral"} stat={neutral} />
+        <StatisticLine type={"bad"} stat={bad} />
+        <StatisticLine type={"all"} stat={all} />
+        <StatisticLine type={"average"} stat={average} />
+        <StatisticLine type={"positive"} stat={positive * 100} />
       </div>
     );
   else return <h4>No feedback given</h4>;
 };
+
 const App = () => {
   // save clicks of each button to its own state
   const [good, setGood] = useState(0);
